@@ -1,0 +1,51 @@
+{
+    "name": "pet-shop",
+    "version": "1.0.0",
+    "description": "",
+    "main": "truffle.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "start": "node server/server-express.js &! webpack-dev-server",
+        "server": "node server/server-express.js",
+        "build": "webpack",
+        "dev": "lite-server",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.3.4",
+        "@babel/plugin-proposal-class-properties": "^7.3.4",
+        "@babel/preset-env": "^7.3.4",
+        "@babel/preset-react": "^7.0.0",
+        "@google-cloud/datastore": "^3.1.1",
+        "@material-ui/core": "^3.9.2",
+        "@material-ui/icons": "^3.0.2",
+        "babel-loader": "^8.0.5",
+        "css-loader": "^2.1.0",
+        "prop-types": "^15.7.2",
+        "react": "^16.8.3",
+        "react-dom": "^16.8.3",
+        "react-redux": "^6.0.1",
+        "redux": "^4.0.1",
+        "redux-thunk": "^2.3.0",
+        "style-loader": "^0.23.1",
+        "truffle-contract": "^4.0.7",
+        "web3": "^1.0.0-beta.47",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.2.3",
+        "webpack-dev-server": "^3.2.1"
+    },
+    "dependencies": {},
+    "babel": {
+        "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+        ],
+        "plugins": [
+            "@babel/plugin-proposal-class-properties"
+        ]
+    }
+}
