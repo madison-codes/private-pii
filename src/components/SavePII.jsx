@@ -7,7 +7,7 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Classify from "./Classify.jsx";
+import Password from "./Password.jsx";
 import Enter from "./Enter.jsx";
 import Review from "./Review.jsx";
 
@@ -35,12 +35,12 @@ const styles = theme => ({
   }
 });
 
-const steps = ["Classify", "Enter", "Review"];
+const steps = ["Password", "Enter", "Review"];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <Classify />;
+      return <Password />;
     case 1:
       return <Enter />;
     case 2:
@@ -80,7 +80,7 @@ class SavePII extends React.Component {
     return (
       <Paper className={classes.paper}>
         <Typography component="h1" variant="h4" align="center">
-          Your PII wrapper
+          Encryptor
         </Typography>
         <Stepper activeStep={activeStep} className={classes.stepper}>
           {steps.map(label => (

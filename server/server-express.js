@@ -3,7 +3,8 @@ const path = require("path");
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const crypto = require("crypto");
+const jwt = require('jsonwebtoken');
+
 const {
     Datastore
 } = require("@google-cloud/datastore");
@@ -14,8 +15,8 @@ const datastore = new Datastore({
 const app = express();
 app.enable("trust proxy");
 
-// const ironCoreConfig = require('./ironcore-config.json');
-// const privateKey = fs.readFileSync(path.join(__dirname, './private.key'), 'utf8');
+const ironCoreConfig = require('./ironcore-config.json');
+const privateKey = fs.readFileSync(path.join(__dirname, './private.key'), 'utf8');
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -27,13 +28,11 @@ const router = express.Router();
 router.post("/new", (req, res) => {
     const pii = datastore.key("pii");
     const id = (Math.floor(Math.random() * (1000 - 0 + 1)) + 0).toString();
-
     const entity = {
         key: pii,
         data: {
             id: id,
-            title: req.body.title,
-            message: req.body.pii
+            message: req.body
         }
     };
     datastore
@@ -52,6 +51,24 @@ router.get("/pii", (req, res) => {
     datastore.runQuery(query).then(result => {
         res.send(result);
     });
+});
+
+router.get('/jwt', (req, res) => {
+    if (req.query.userID) {
+        const token = jwt.sign({
+                pid: ironCoreConfig.projectId,
+                sid: ironCoreConfig.segmentId,
+                kid: ironCoreConfig.serviceKeyId
+            },
+            privateKey, {
+                algorithm: 'ES256',
+                expiresIn: '2m',
+                subject: req.query.userID
+            }
+        );
+        res.send(token);
+    } else
+        res.status(404).send('Not found');
 });
 
 app.use("/", router);

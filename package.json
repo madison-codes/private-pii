@@ -21,10 +21,12 @@
         "@babel/preset-env": "^7.3.4",
         "@babel/preset-react": "^7.0.0",
         "@google-cloud/datastore": "^3.1.1",
+        "@ironcorelabs/ironweb": "^1.2.3",
         "@material-ui/core": "^3.9.2",
         "@material-ui/icons": "^3.0.2",
         "babel-loader": "^8.0.5",
         "css-loader": "^2.1.0",
+        "jsonwebtoken": "^8.5.0",
         "prop-types": "^15.7.2",
         "react": "^16.8.3",
         "react-dom": "^16.8.3",
@@ -36,9 +38,12 @@
         "web3": "^1.0.0-beta.47",
         "webpack": "^4.29.6",
         "webpack-cli": "^3.2.3",
-        "webpack-dev-server": "^3.2.1"
+        "webpack-dev-server": "^3.2.1",
+        "whatwg-fetch": "^3.0.0"
     },
-    "dependencies": {},
+    "dependencies": {
+        "es6-promise": "^4.2.6"
+    },
     "babel": {
         "presets": [
             "@babel/preset-env",

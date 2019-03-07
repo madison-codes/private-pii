@@ -13,7 +13,7 @@ const privateKey = fs.readFileSync(
 http
     .createServer((req, res) => {
         const query = url.parse(req.url, true).query;
-        if (req.url.indexOf("/generateJWT") === 0 && query.userID) {
+        if (req.url.indexOf("/jwt") === 0 && query.userID) {
             const token = jwt.sign({
                     pid: ironCoreConfig.projectId,
                     sid: ironCoreConfig.segmentId,
@@ -22,7 +22,7 @@ http
                 privateKey, {
                     algorithm: "ES256",
                     expiresIn: "2m",
-                    subject: query.userID
+                    subject: '1'
                 }
             );
             res.setHeader("Access-Control-Allow-Origin", "*");
