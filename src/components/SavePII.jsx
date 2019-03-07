@@ -17,7 +17,7 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 3,
     padding: theme.spacing.unit * 2,
     [theme.breakpoints.up(600 + theme.spacing.unit * 3 * 2)]: {
-      marginTop: theme.spacing.unit * 6,
+      marginTop: theme.spacing.unit * 12,
       marginBottom: theme.spacing.unit * 6,
       padding: theme.spacing.unit * 3
     }
@@ -37,23 +37,23 @@ const styles = theme => ({
 
 const steps = ["Password", "Enter", "Review"];
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <Password />;
-    case 1:
-      return <Enter />;
-    case 2:
-      return <Review />;
-    default:
-      throw new Error("Unknown step");
-  }
-}
-
 class SavePII extends React.Component {
   state = {
     activeStep: 0
   };
+
+  getStepContent(step) {
+    switch (step) {
+      case 0:
+        return <Password handleNext={this.handleNext} />;
+      case 1:
+        return <Enter handleNext={this.handleNext} />;
+      case 2:
+        return <Review />;
+      default:
+        throw new Error("Unknown step");
+    }
+  }
 
   handleNext = () => {
     this.setState(state => ({
@@ -103,21 +103,21 @@ class SavePII extends React.Component {
             </>
           ) : (
             <>
-              {getStepContent(activeStep)}
+              {this.getStepContent(activeStep)}
               <div className={classes.buttons}>
                 {activeStep !== 0 && (
                   <Button onClick={this.handleBack} className={classes.button}>
                     Back
                   </Button>
                 )}
-                <Button
+                {/* <Button
                   variant="contained"
                   color="primary"
                   onClick={this.handleNext}
                   className={classes.button}
                 >
                   {activeStep === steps.length - 1 ? "Place order" : "Next"}
-                </Button>
+                </Button> */}
               </div>
             </>
           )}

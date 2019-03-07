@@ -20,6 +20,7 @@ export class Password extends React.Component {
 
   submit() {
     this.props.initialize(this.state.password);
+    this.props.handleNext();
   }
 
   render() {
@@ -45,9 +46,7 @@ export class Password extends React.Component {
           variant="contained"
           color="primary"
           onClick={() => this.submit()}
-          // className={classes.button}
         >
-          {/* {activeStep === steps.length - 1 ? "Place order" : "Next"} */}
           {"Submit"}
         </Button>
       </>

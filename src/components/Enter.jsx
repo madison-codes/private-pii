@@ -23,6 +23,7 @@ export class Enter extends React.Component {
 
   submit() {
     this.props.addPII(this.state.message);
+    this.props.handleNext();
   }
 
   render() {
@@ -48,9 +49,7 @@ export class Enter extends React.Component {
             variant="contained"
             color="primary"
             onClick={() => this.submit()}
-            // className={classes.button}
           >
-            {/* {activeStep === steps.length - 1 ? "Place order" : "Next"} */}
             {"Submit"}
           </Button>
         </Grid>
