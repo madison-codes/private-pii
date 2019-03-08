@@ -6,8 +6,6 @@ import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
 import { addPII } from "../actions/index.js";
 
-const message = ["success", "failure"];
-
 export class Enter extends React.Component {
   constructor() {
     super();
@@ -39,7 +37,7 @@ export class Enter extends React.Component {
               required
               id="message"
               name="message"
-              label="Information to secure"
+              label="Information to encrypt"
               onChange={e => this.addMessage(e.target.value)}
               fullWidth
               autoComplete="billing address-line1"
