@@ -1,10 +1,6 @@
 const URL = 'http://localhost:3001';
 
-export function addPII(title, pii) {
-    const payload = {
-        title,
-        pii
-    }
+export function addPII(message) {
     return fetch(`${URL}/new`, {
         headers: {
             'Accept': 'application/json',
@@ -12,9 +8,18 @@ export function addPII(title, pii) {
         },
         method: "POST",
         mode: 'cors',
-        body: JSON.stringify(payload)
+        body: JSON.stringify({
+            message
+        })
     })
 }
+
+export function getJWT(userID) {
+    return fetch(`http://localhost:3001/jwt?userID=${userID}`)
+        .then((response) => response.text())
+        .catch((e) => console.log(e));
+}
+
 
 export function getPII(key, item) {
     fetch(`${URL}/pii`, {

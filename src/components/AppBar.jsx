@@ -18,7 +18,7 @@ export class Nav extends React.Component {
       <AppBar position="absolute" color="default">
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Personal PII Protector
+            Message Encryption
           </Typography>
         </Toolbar>
       </AppBar>

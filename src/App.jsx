@@ -1,12 +1,12 @@
 import React from "react";
-import Web3 from "web3";
 import SavePII from "./components/SavePII.jsx";
-import TruffleContract from "truffle-contract";
-import Election from "../build/contracts/Election.json";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "./components/AppBar.jsx";
+// import Web3 from "web3";
+// import TruffleContract from "truffle-contract";
+// import Election from "../build/contracts/Election.json";
 
 const styles = theme => ({
   layout: {
@@ -34,6 +34,8 @@ export class App extends React.Component {
   //       contracts: {}
   //     };
   //   }
+
+  //   TODO: HOOK up to truffleJS to push encrypted data to blockchain
 
   //   componentDidMount() {
   //     this.initWeb3();
